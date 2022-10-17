@@ -27,18 +27,18 @@ def answers(name):
     elif request.method == 'POST':
         data = request.get_json()
         print(data)
-        content = json.loads(open(f'stats/joon.json', 'rb').read())
+        content = json.loads(open(f'answers/joon.json', 'rb').read())
         # Add the new answer from POST to current JSON
         content["worldle"].append(data)
 
-        with open(f'stats/{name}.json', 'w', encoding='utf-8') as f:
+        with open(f'answers/{name}.json', 'w', encoding='utf-8') as f:
             json.dump(content, f, ensure_ascii=False, indent=4)
         return f"Data for {name} updated!"
 
 
-@app.route('/stats', methods=['GET'])
+@app.route('/answers', methods=['GET'])
 def stats():
-    question_data = open('stats/joon.json', 'rb').read()
+    question_data = open('answers/joon.json', 'rb').read()
     question_data = json.loads(question_data)
     for question in question_data:
         print(question)
