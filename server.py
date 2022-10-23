@@ -1,12 +1,10 @@
 from audioop import avg
 import flask
-import random
 import json
 from flask import jsonify
 from flask import request
 from flask import send_from_directory
 from system import getData
-import csv
 
 splitword = 'burger'
 
@@ -51,34 +49,38 @@ def stats():
 
     joonData = open('answers/joon.json', 'rb').read()
     joonData = json.loads(joonData)
-    players.append(joonData)
+    players.append(["joon", joonData])
 
     klitoData = open('answers/klito.json', 'rb').read()
     klitoData = json.loads(klitoData)
-    players.append(klitoData)
+    players.append(["klito", klitoData])
 
     peteData = open('answers/pete.json', 'rb').read()
     peteData = json.loads(peteData)
-    players.append(peteData)
+    players.append(["pete", peteData])
 
-    dict = {
-        "worldle": 0,
-        "countryle": 0,
-        "globle": 0,
-        "tradle": 0,
-        "flagle": 0
+    playerDict = {
+        "joon":0,
+        "klito":0,
+        "pete":0
     }
 
     for player in players:
-        for item in player.items():
+        dict = {
+            "worldle": 0,
+            "countryle": 0,
+            "globle": 0,
+            "tradle": 0,
+            "flagle": 0
+        }
+
+        for item in player[1].items():
             avgNum = 0
             for e in item[1]:
                 avgNum = avgNum + e
             if (len(item[1])):
                 avgNum = avgNum / len(item[1])
             dict[item[0]] = avgNum
-            print(avgNum)
+        playerDict[player[0]] = dict
 
-    print(dict)
-
-    return "Question not found!"
+    return playerDict
