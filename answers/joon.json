@@ -1,7 +1,27 @@
 {
-  "worldle": [],
-  "countryle": [],
-  "tradle": [],
-  "globle": [],
-  "flagle": []
+    "worldle": [
+        1,
+        1,
+        1
+    ],
+    "countryle": [
+        7,
+        11,
+        3
+    ],
+    "globle": [
+        4,
+        6,
+        15
+    ],
+    "tradle": [
+        4,
+        6,
+        3
+    ],
+    "flagle": [
+        2,
+        2,
+        2
+    ]
 }
