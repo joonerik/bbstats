@@ -4,6 +4,7 @@ import json
 from flask import jsonify
 from flask import request
 from flask import send_from_directory
+from flask import render_template
 from system import getData
 
 splitword = 'burger'
@@ -13,10 +14,7 @@ app = flask.Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def get():
-    return '''
-    <h3>POST /answers/user_id</h3>
-    <h3>GET /stats/<h3>
-    '''
+    return render_template('form.html')
 
 @app.route('/answers/<name>', methods=['GET', 'POST'])
 def answers(name):
@@ -25,19 +23,18 @@ def answers(name):
         return json.loads(data)
 
     elif request.method == 'POST':
-        text = request.get_data(as_text=True)
-        
+        text = request.form[f'burger_field_{name}']
         if not splitword in text:
             raise Exception(f"gimme {splitword}")
         else:
             stringArray = text.split(splitword)
 
         data = json.loads(getData(stringArray))
-        content = json.loads(open(f'answers/joon.json', 'rb').read())
+        content = json.loads(open(f'answers/{name}.json', 'rb').read())
 
         for game, score in data.items():
             content[game].append(score)
-
+            
         with open(f'answers/{name}.json', 'w', encoding='utf-8') as f:
             json.dump(content, f, ensure_ascii=False, indent=4)
 
