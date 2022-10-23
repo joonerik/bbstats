@@ -2,8 +2,6 @@ import json
 
 def getData(answerArray):
     stringArray = answerArray
-    #for line in answerString.splitlines():
-    #    stringArray.append(line)
 
     dict = {
         "worldle": '',
@@ -42,9 +40,8 @@ def getData(answerArray):
         
         elif '#Flagle' in line:
             dict["flagle"] = (int(line[line.index('/6')-1]))
+
+        else:
+            raise Exception(f"No valid data")
     
     return json.dumps(dict)
-
-with open('drit.txt') as f:
-    #print(getData(f.read()))
-    print("Kjøh")
