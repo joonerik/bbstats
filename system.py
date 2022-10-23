@@ -2,6 +2,7 @@ import json
 
 def getData(answerArray):
     stringArray = answerArray
+    print(stringArray)
 
     dict = {
         "worldle": '',
@@ -40,8 +41,8 @@ def getData(answerArray):
         
         elif '#Flagle' in line:
             dict["flagle"] = (int(line[line.index('/6')-1]))
-
-        else:
-            raise Exception(f"No valid data")
     
+    if any(s == '' for s in dict.values()):
+        raise Exception(f"No valid data")
+        
     return json.dumps(dict)
