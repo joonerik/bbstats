@@ -1,0 +1,33 @@
+<body>
+  {%if name == 'joon'%}
+    <h1>Joonerns resultater</h1>
+  {%endif%}
+
+  {%if name == 'klito'%}
+    <h1>Kliterns resultater</h1>
+  {%endif%}
+
+  {%if name == 'pete'%}
+    <h1>Petterns resultater</h1>
+  {%endif%}
+
+  <table border = '1'>
+      <thead>
+        <tr>
+        {% for header in headers %}
+          <th>{{ header }}</th>
+        {% endfor %}
+        <tr>
+      </thead>
+      
+      <tbody>
+        {% for row in rows %}
+        <tr>
+            {% for value in row %}   
+              <td>{{ value }}</td>   
+            {% endfor %}
+        <tr>
+        {% endfor %}
+      </tbody>
+  </table>
+</body>

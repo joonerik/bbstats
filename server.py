@@ -20,7 +20,12 @@ def get():
 def answers(name):
     if request.method == 'GET':
         data = open(f'answers/{name}.json', 'rb').read()
-        return json.loads(data)
+        dict = json.loads(data)
+
+        all_headers = list(dict.keys())
+        all_rows = list(zip(*dict.values()))
+        
+        return render_template('personScore.html', rows = all_rows, headers = all_headers, name = name)
 
     elif request.method == 'POST':
         text = request.form[f'burger_field_{name}']
@@ -80,4 +85,11 @@ def stats():
             dict[item[0]] = avgNum
         playerDict[player[0]] = dict
 
-    return playerDict
+    return f'''
+        <h1>Average Scores</h1>
+        <p>Joon: {playerDict["joon"]}</p>
+        <br>
+        <p>Klito: {playerDict["klito"]}</p>
+        <br>
+        <p>Pete: {playerDict["pete"]}</p>
+    '''
