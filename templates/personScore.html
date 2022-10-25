@@ -1,15 +1,20 @@
 <body>
-  {%if name == 'joon'%}
-    <h1>Joonerns resultater</h1>
-  {%endif%}
+  <div style="display: flex; border: 2px solid #000000; border-radius: 10px; padding: 10px;">
+    {%if name == 'joon'%}
+      <img src="{{url_for('static', filename='joon.jpeg')}}" alt="joonern" width="100px" height="100px">
+      <h1>Joonerns resultater</h1>
+    {%endif%}
 
-  {%if name == 'klito'%}
-    <h1>Kliterns resultater</h1>
-  {%endif%}
+    {%if name == 'klito'%}
+      <img src="{{url_for('static', filename='klito.jpeg')}}" alt="klitern" width="100px" height="100px">
+      <h1>Kliterns resultater</h1>
+    {%endif%}
 
-  {%if name == 'pete'%}
-    <h1>Petterns resultater</h1>
-  {%endif%}
+    {%if name == 'pete'%}
+      <img src="{{url_for('static', filename='pete.jpeg')}}" alt="pettern" width="100px" height="100px">
+      <h1>Petterns resultater</h1>
+    {%endif%}
+  </div>
 
   <table border = '1'>
       <thead>
