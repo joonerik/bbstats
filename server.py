@@ -92,4 +92,6 @@ def stats():
         <p>Klito: {playerDict["klito"]}</p>
         <br>
         <p>Pete: {playerDict["pete"]}</p>
+        <br>
+        <a href="/"><button>&#x2190; Tilbake</button></a>
     '''
