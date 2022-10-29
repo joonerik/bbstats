@@ -6,6 +6,7 @@ from flask import request
 from flask import send_from_directory
 from flask import render_template
 from system import getData
+from database import testDrit
 
 splitword = 'burger'
 
@@ -93,5 +94,6 @@ def stats():
         <br>
         <p>Pete: {playerDict["pete"]}</p>
         <br>
+        <p>{testDrit()}</p>
         <a href="/"><button>&#x2190; Tilbake</button></a>
     '''
